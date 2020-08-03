@@ -1,0 +1,438 @@
+'''
+Name: Martina Karalliu
+These are my tries on making an Albanian Flag with python graphics. It is not the best but ofc not the worst.
+'''
+
+import turtle
+
+rd = turtle.Turtle()   #pen for background of flag
+bl1 = turtle.Turtle()  #the eagle ( dont ask why there is a 1, last minute changes happened. )
+bl = turtle.Turtle()   #used for writing "albania" (yes turtle can write) 
+
+rd.speed(50)           #speeding things up
+bl1.speed(50)
+bl1.pensize(3)         #raisning the pensize so it lookes more polished
+bl1.color('black')
+
+''''
+I use these variables for angles to use in  modyfing the shapes. 
+CC1 is used on the back neck of the eagle getting larger and higher with each count.
+CC4 is used for the wings 
+The others are used in converting the sides from left to right on counterwise. 
+CC0 changes into 180
+'''
+
+cc0 = 0              #set heading 0, changes into 180
+cc1 = 35             #back of eagle, will change to 320
+cc2 = 30             #turn 30, changes 330
+cc3 = 90             #turn 90, changes 270
+cc4 = 35             #wings, change into 325
+cc5 = 20             #changes into 340
+cc6 = 40             #turn 40 changes into 320
+cc7 = -170           #turn into 170
+
+n=15                 #wings numb
+m=25                 #these numbers are used in modyfing the wings
+
+#red background.
+
+rd.penup()
+rd.goto(-500, -400)  #plag starts, middle of grid
+rd.pendown()
+rd.begin_fill()      #fills the shape
+rd.color('red')
+rd.fd(1000)
+rd.left(90)
+rd.fd(800)
+rd.left(90)
+rd.fd(1000)
+rd.left(90)
+rd.fd(800)
+rd.left(90)
+rd.end_fill()         #end
+
+#black eagle.
+
+bl1.begin_fill()
+
+bl1.penup()
+bl1.goto(0, 70)       #start in the middle-ish
+bl1.pendown()
+
+for i in range(0, 2): #for loop for the shape of the neck.
+    bl1.left(cc1)
+    bl1.forward(22)
+    bl1.setheading(cc0)
+    bl1.back(7)
+    cc1 = cc1 + 5
+    str(i)
+
+bl1.back(5)           #Working on the head, curve 
+bl1.left(cc2)
+bl1.fd(8)
+bl1.setheading(cc0)
+bl1.left(cc2)
+bl1.fd(8)
+bl1.left(cc5)
+bl1.fd(8)
+bl1.right(cc2)
+bl1.fd(8)
+bl1.right(cc5)
+bl1.fd(8)
+bl1.right(cc2)
+bl1.fd(8)
+bl1.right(cc5)
+bl1.fd(8)             #I didn't ue circles right away as I didn't want the head to be too round, kind of oval-y. 
+
+#working on the beak
+bl1.setheading(cc0)
+bl1.circle(-15, 80)  #here is where the circle starts to come in play. 
+bl1.setheading(cc0 + 180)
+bl1.right(cc2)
+bl1.fd(2)
+bl1.right(cc5)
+bl1.fd(2)
+bl1.circle(15, 80)
+bl1.circle(2, 180)
+
+bl1.setheading(cc0)  #the tounge of the eagle
+bl1.fd(15)
+bl1.left(cc5)
+bl1.fd(5)
+bl1.circle(-2, 180)  #you may be asking yourself: why are some radius-es negative and some positive. 
+bl1.fd(5)            #that's because, it affects the direction (clc, or count-clc) which the circle forms
+bl1.right(cc5)       #that's a;so why, when we copy paste to make the other side of the eagle, we change it from negative to positive
+bl1.fd(17)
+bl1.circle(3, 180)
+
+bl1.fd(4)            #end beak
+bl1.setheading(cc0)
+bl1.circle(15, 80)
+bl1.setheading(cc0 + 180)
+bl1.left(cc2)
+bl1.fd(2)
+bl1.left(cc5)
+bl1.fd(2)
+bl1.circle(-15, 80)
+bl1.setheading(-90)
+bl1.fd(5)
+bl1.setheading(cc0 + 180)
+bl1.left(cc2)
+bl1.fd(3)
+bl1.left(cc5)
+bl1.fd(8)
+
+bl1.circle(25, 100)
+bl1.fd(2)
+bl1.circle(12, 120)
+bl1.circle(-5, 90)
+bl1.fd(3)
+
+
+
+for j in range(0, 5):  #wings and curves with for loop
+    bl1.setheading(0)    
+    bl1.left(cc4)
+    bl1.fd(5)
+    bl1.left(cc5)
+    bl1.fd(n)
+    bl1.left(cc5)
+    bl1.fd(m)
+    bl1.circle(-3, 170)
+    bl1.fd(m)
+    bl1.right(cc5)
+    bl1.fd(m)
+    bl1.right(cc5)
+    bl1.fd(5)
+    bl1.circle(2, 180)
+    cc4=cc4-14
+    n=n-3
+    m=m-3
+    str(j)
+
+bl1.setheading(cc0)      #one last, bigger wing
+bl1.left(cc4)
+bl1.fd(5)
+bl1.left(cc5)
+bl1.fd(15)
+bl1.left(cc5)
+bl1.fd(15)
+bl1.circle(-3, 170)
+bl1.fd(20)
+bl1.right(cc5)
+bl1.fd(15)
+bl1.right(cc5)
+bl1.fd(5)
+bl1.circle(2, 180)
+
+
+bl1.setheading(cc0+180)   #feet
+bl1.fd(5)
+bl1.circle(10, 240)
+bl1.back(18) 
+
+bl1.forward(9)
+bl1.right(cc3)
+bl1.forward(20)
+ 
+bl1.left(cc6)            #I used different pensizes to make the different parts in the feet
+bl1.fd(20)
+bl1.pensize(10)
+bl1.fd(1)
+bl1.pensize(3)
+bl1.fd(5)
+bl1.pensize(1)
+bl1.fd(3)
+bl1.back(28)  
+
+bl1.right(cc6+cc2) 
+bl1.pensize(3)
+bl1.fd(20)
+bl1.pensize(10)
+bl1.fd(1)
+bl1.pensize(3)
+bl1.fd(5)
+bl1.pensize(1)
+bl1.fd(3)
+bl1.back(28)
+
+bl1.left(cc2)
+bl1.pensize(3)
+bl1.fd(20)
+bl1.pensize(10)
+bl1.fd(1)
+bl1.pensize(3)
+bl1.fd(5)
+bl1.pensize(1)
+bl1.fd(3)
+bl1.back(28)
+bl1.pensize(3)
+bl1.back(20)             #after we finish with the feet we are going to move on with the the parts of the tail. 
+
+bl1.right(cc3)
+bl1.fd(15)
+bl1.right(180)
+bl1.circle(8, 140)
+bl1.fd(35)
+bl1.circle(8, 230)
+bl1.circle(-5, 190)
+
+for a in range(0, 2):    #like the head, we do the same method for the tail. 
+  bl1.fd(35)
+  bl1.right(cc6)
+  bl1.back(11)
+  bl1.left(cc2)
+  str(a)
+
+bl1.right(cc2)
+bl1.back(11)
+bl1.circle(100, 29)
+
+
+# finished 
+#for the next half i am going to reverse the variables and copy and pase the code and change a few things. 
+
+cc0=180
+cc1=320
+cc2=330
+cc3=270
+cc4=325
+cc5=340
+cc6=320
+cc7=170
+n=15      #wings numb
+m=25
+
+                       #second half.
+bl1.penup()
+bl1.goto(0, 70)        #start in the middle agai.
+bl1.pendown()
+
+bl1.setheading(cc0)
+for i in range(0, 2):  #for loop for the shape of the neck.
+    bl1.left(cc1)
+    bl1.forward(22)
+    bl1.setheading(cc0)
+    bl1.back(7)
+    cc1 = cc1 + 5
+    str(i)
+
+bl1.back(5)            #Working on the head, curve
+bl1.left(cc2)
+bl1.fd(8)
+bl1.setheading(cc0)
+bl1.left(cc2)
+bl1.fd(8)
+bl1.left(cc5)
+bl1.fd(8)
+bl1.right(cc2)
+bl1.fd(8)
+bl1.right(cc5)
+bl1.fd(8)
+bl1.right(cc2)
+bl1.fd(8)
+bl1.right(cc5)
+bl1.fd(8)
+
+#working on the beak
+bl1.setheading(cc0)
+bl1.circle(15, 80)  
+bl1.setheading(cc0 + 180)
+bl1.right(cc2)
+bl1.fd(2)
+bl1.right(cc5)
+bl1.fd(2)
+bl1.circle(-15, 80)
+bl1.circle(-2, 180)
+
+bl1.setheading(cc0)
+bl1.fd(15)
+bl1.left(cc5)
+bl1.fd(5)
+bl1.circle(2, 180)
+bl1.fd(5)
+bl1.right(cc5)
+bl1.fd(17)
+bl1.circle(-3, 180)
+
+bl1.fd(4)
+bl1.setheading(cc0)
+bl1.circle(-15, 80)
+bl1.setheading(cc0 + 180)
+bl1.left(cc2)
+bl1.fd(2)
+bl1.left(cc5)
+bl1.fd(2)
+bl1.circle(15, 80)
+bl1.setheading(-90)
+bl1.fd(5)
+bl1.setheading(cc0 + 180)
+bl1.left(cc2)
+bl1.fd(3)
+bl1.left(cc5)
+bl1.fd(8)
+
+bl1.circle(-25, 100)
+bl1.fd(2)
+bl1.circle(-12, 120)
+bl1.circle(5, 90)
+bl1.fd(3)
+
+for j in range(0, 5):         #wings and curves with for loop
+    bl1.setheading(cc0)    
+    bl1.left(cc4)
+    bl1.fd(5)
+    bl1.left(cc5)
+    bl1.fd(n)
+    bl1.left(cc5)
+    bl1.fd(m)
+    bl1.circle(3, 170)
+    bl1.fd(m)
+    bl1.right(cc5)
+    bl1.fd(m)
+    bl1.right(cc5)
+    bl1.fd(5)
+    bl1.circle(-2, 180)
+    cc4=cc4+14
+    n=n-3
+    m=m-3
+    str(j)
+
+bl1.setheading(cc0)    
+bl1.left(cc4)
+bl1.fd(5)
+bl1.left(cc5)
+bl1.fd(15)
+bl1.left(cc5)
+bl1.fd(15)
+bl1.circle(3, 170)
+bl1.fd(20)
+bl1.right(cc5)
+bl1.fd(15)
+bl1.right(cc5)
+bl1.fd(5)
+bl1.circle(-2, 180)
+
+
+bl1.setheading(cc0+180)         #feet
+bl1.fd(5)
+bl1.circle(-10, 240)
+bl1.back(18) 
+
+bl1.forward(9)
+bl1.right(cc3)
+bl1.forward(20)
+
+bl1.left(cc6)
+bl1.fd(20)
+bl1.pensize(10)
+bl1.fd(1)
+bl1.pensize(3)
+bl1.fd(5)
+bl1.pensize(1)
+bl1.fd(3)
+bl1.back(28)
+bl1.right(cc6+cc2)
+bl1.pensize(3)
+bl1.fd(20)
+bl1.pensize(10)
+bl1.fd(1)
+bl1.pensize(3)
+bl1.fd(5)
+bl1.pensize(1)
+bl1.fd(3)
+bl1.back(28)
+
+bl1.left(cc2)
+bl1.pensize(3)
+bl1.fd(20)
+bl1.pensize(10)
+bl1.fd(1)
+bl1.pensize(3)
+bl1.fd(5)
+bl1.pensize(1)
+bl1.fd(3)
+bl1.back(28)
+bl1.pensize(3)
+bl1.back(20)
+
+bl1.right(cc3)
+bl1.fd(15)
+bl1.right(180)
+bl1.circle(-8, 140)
+bl1.fd(35)
+bl1.circle(-8, 230)
+bl1.circle(5, 190)
+
+for a in range(0, 2):
+  bl1.fd(35)
+  bl1.right(cc6)
+  bl1.back(11)
+  bl1.left(cc2)
+  str(a)
+
+bl1.right(cc2)
+bl1.back(11)
+bl1.circle(-100, 29)
+
+#end of eagle
+
+bl1.end_fill() 
+
+bl.goto(-60, 0) #text
+bl.pencolor("yellow")
+text="ALBANIA"
+bl.write(text, move=True, font=("Calimbria", 20, "normal"))
+
+rd.penup()
+rd.goto(55, 100)                    #eyes doen with the red and a bigger pensize
+rd.pendown()
+rd.pensize(5)
+rd.fd(1)
+rd.penup()
+rd.goto(-55, 100)
+rd.pendown()
+rd.fd(1)
+
+
+#the eagle is done
